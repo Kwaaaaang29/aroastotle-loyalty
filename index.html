@@ -117,26 +117,19 @@
             color: #fff;
         }
 
+        /* CONTACT NUMBER FORMATTED TO WHITE & MATCHED FONT */
         .customer-phone {
-            font-size: 0.65rem;
-            color: var(--gold-light);
+            font-size: 0.75rem;
+            color: #ffffff;
             margin-top: 2px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
         }
 
         .card-id {
             font-size: 0.65rem;
             color: var(--text-dim);
             margin-top: 2px;
-        }
-
-        .status-badge {
-            font-size: 0.65rem;
-            color: var(--gold-light);
-            background: rgba(212, 175, 55, 0.1);
-            padding: 4px 8px;
-            border-radius: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            cursor: pointer;
         }
 
         .stamps-grid {
@@ -237,6 +230,7 @@
             font-size: 0.75rem;
             color: #ffffff;
             line-height: 1.5;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .footer-label {
@@ -248,8 +242,9 @@
         }
 
         .footer-link {
-            color: var(--gold-light);
+            color: #ffffff;
             text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .modal-overlay {
@@ -313,11 +308,11 @@
 </head>
 <body>
 
-    <!-- REGISTRATION POPUP MODAL -->
+    <!-- REGISTRATION POPUP MODAL (SHOWN ONLY ONCE) -->
     <div class="modal-overlay" id="regModal">
         <div class="modal-box">
             <div class="modal-title">Register Loyalty Card</div>
-            <div class="modal-desc">Enter your details to activate your digital card and save your stamps.</div>
+            <div class="modal-desc">Enter your details to activate your digital card. Profile cannot be changed once submitted.</div>
             <input type="text" id="inputName" class="modal-input" placeholder="Full Name (e.g. Juan Cruz)">
             <input type="tel" id="inputPhone" class="modal-input" placeholder="Contact Number (e.g. 09123456789)">
             <button class="btn" style="width: 100%;" id="saveRegBtn">COMPLETE REGISTRATION</button>
@@ -329,21 +324,20 @@
         <div class="brand-header">
             <div class="top-quote">“More than just a café—it’s a place where good food meets good vibes and every customer feels welcome.”</div>
             <div class="logo-container">
-                <!-- UPDATED LOGO IMAGE FILENAME BELOW -->
-                <img src="logo.jpg" alt="aroastotle cafe logo" class="logo-img">
+                <!-- RELATIVE PATH FOR LOGO IMAGE -->
+                <img src="./logo.jpg" alt="aroastotle cafe logo" class="logo-img">
             </div>
             <div class="establishment-tag">Est. 2026</div>
             <div class="sub-tagline">~ Awaken the Mind ~</div>
         </div>
 
-        <!-- CUSTOMER DETAILS -->
+        <!-- CUSTOMER DETAILS (NO EDIT BUTTON) -->
         <div class="info-bar">
             <div>
                 <div class="customer-name" id="dispName">Valued Customer</div>
-                <div class="customer-phone" id="dispPhone">📱 Click badge to edit</div>
+                <div class="customer-phone" id="dispPhone">📱 Contact Number</div>
                 <div class="card-id" id="dispID">NFC ID: #ARO-882026</div>
             </div>
-            <div class="status-badge" id="editProfileBtn">✏️ EDIT PROFILE</div>
         </div>
 
         <!-- STAMPS GRID -->
@@ -381,7 +375,6 @@
         const dispName = document.getElementById('dispName');
         const dispPhone = document.getElementById('dispPhone');
         const dispID = document.getElementById('dispID');
-        const editProfileBtn = document.getElementById('editProfileBtn');
 
         const stampsGrid = document.getElementById('stampsGrid');
         const addStampBtn = document.getElementById('addStampBtn');
@@ -422,12 +415,6 @@
             localStorage.setItem('aro_phone', phone);
 
             initUserData();
-        });
-
-        editProfileBtn.addEventListener('click', () => {
-            inputName.value = localStorage.getItem('aro_name') || '';
-            inputPhone.value = localStorage.getItem('aro_phone') || '';
-            regModal.classList.remove('hidden');
         });
 
         function getStampCount() {
