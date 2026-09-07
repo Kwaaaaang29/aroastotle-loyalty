@@ -247,7 +247,11 @@
             margin-top: 6px;
         }
 
-        /* REGISTRATION MODAL STYLES */
+        .footer-link {
+            color: var(--gold-light);
+            text-decoration: none;
+        }
+
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -325,7 +329,8 @@
         <div class="brand-header">
             <div class="top-quote">“More than just a café—it’s a place where good food meets good vibes and every customer feels welcome.”</div>
             <div class="logo-container">
-                <img src="41287.jpg" alt="aroastotle cafe logo" class="logo-img">
+                <!-- UPDATED LOGO IMAGE FILENAME BELOW -->
+                <img src="logo.jpg" alt="aroastotle cafe logo" class="logo-img">
             </div>
             <div class="establishment-tag">Est. 2026</div>
             <div class="sub-tagline">~ Awaken the Mind ~</div>
@@ -354,9 +359,11 @@
             <button class="btn btn-reset" id="resetBtn">RESET CARD</button>
         </div>
 
-        <!-- LOCATION & CONTACT INFO -->
+        <!-- CALL US & LOCATION -->
         <div class="footer-info">
             <span class="footer-label">Call us:</span>
+            <span><a href="tel:09927036834" class="footer-link">09927036834</a></span>
+            
             <span class="footer-label">Location:</span>
             <span>AROASTOTLE CAFE - BAGONG SILANG BRANCH Phase 4 package 8 Langit Road Bagong Silang, Caloocan, Philippines, 1428</span>
         </div>
@@ -364,7 +371,7 @@
 
     <script>
         const maxStamps = 10;
-        const adminPass = "1234";
+        const adminPass = "1981";
 
         const regModal = document.getElementById('regModal');
         const inputName = document.getElementById('inputName');
@@ -380,7 +387,6 @@
         const addStampBtn = document.getElementById('addStampBtn');
         const resetBtn = document.getElementById('resetBtn');
 
-        // Load Saved Data or Show Modal
         function initUserData() {
             const savedName = localStorage.getItem('aro_name');
             const savedPhone = localStorage.getItem('aro_phone');
@@ -410,8 +416,11 @@
                 return;
             }
 
+            let savedID = localStorage.getItem('aro_id') || ('#ARO-' + Math.floor(100000 + Math.random() * 900000));
+            localStorage.setItem('aro_id', savedID);
             localStorage.setItem('aro_name', name);
             localStorage.setItem('aro_phone', phone);
+
             initUserData();
         });
 
