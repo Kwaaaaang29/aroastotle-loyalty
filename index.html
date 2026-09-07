@@ -65,11 +65,10 @@
             padding: 0 5px;
         }
 
-        /* ENLARGED LOGO CONTAINER */
         .logo-container {
             width: 220px;
             height: auto;
-            margin: 0 auto 10px auto;
+            margin: 0 auto 5px auto;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -84,13 +83,12 @@
             border-radius: 8px;
         }
 
-        /* EST. 2026 INSIDE LOGO AREA BELOW CAFE */
         .establishment-tag {
             font-family: 'Cinzel', serif;
             font-size: 0.65rem;
             color: var(--gold-main);
             letter-spacing: 2px;
-            margin-top: 2px;
+            margin-top: 4px;
             text-transform: uppercase;
             text-align: center;
         }
@@ -115,7 +113,6 @@
             margin-bottom: 20px;
         }
 
-        /* CUSTOMER NAME ALL CAPS & WHITE */
         .customer-name {
             font-size: 0.85rem;
             font-weight: 700;
@@ -130,6 +127,12 @@
             margin-top: 2px;
             font-family: 'Montserrat', sans-serif;
             font-weight: 400;
+        }
+
+        .phone-icon {
+            color: var(--gold-main);
+            font-style: normal;
+            margin-right: 4px;
         }
 
         .card-id {
@@ -203,7 +206,6 @@
             font-size: 0.9rem;
         }
 
-        /* PROFESSIONAL REWARD TEXT */
         .reward-info {
             text-align: center;
             font-size: 0.72rem;
@@ -354,7 +356,7 @@
         <div class="info-bar">
             <div>
                 <div class="customer-name" id="dispName">VALUED CUSTOMER</div>
-                <div class="customer-phone" id="dispPhone">📱 Contact Number</div>
+                <div class="customer-phone" id="dispPhone"><i class="phone-icon">📞</i> Contact Number</div>
                 <div class="card-id" id="dispID">NFC ID: #ARO-882026</div>
             </div>
             <div class="status-badge" id="editProfileBtn">✏️ EDIT PROFILE</div>
@@ -364,7 +366,7 @@
         <div class="stamps-grid" id="stampsGrid"></div>
 
         <div class="reward-info">
-            Complimentary Hot or Iced Coffee & Matcha Series upon completing 10 stamps.
+            Claim your Free Hot or Iced Coffee & Matcha Series after 10 stamps.
         </div>
 
         <!-- ACTION BUTTONS -->
@@ -416,7 +418,7 @@
             } else {
                 regModal.classList.add('hidden');
                 dispName.innerText = savedName;
-                dispPhone.innerText = '📱 ' + savedPhone;
+                dispPhone.innerHTML = '<i class="phone-icon">📞</i> ' + savedPhone;
             }
             dispID.innerText = 'NFC ID: ' + savedID;
         }
@@ -438,7 +440,6 @@
             initUserData();
         });
 
-        /* PROTECTED EDIT PROFILE WITH BARISTA PASSWORD */
         editProfileBtn.addEventListener('click', () => {
             const pass = prompt("Enter Barista Password to edit profile:");
             if (pass === adminPass) {
